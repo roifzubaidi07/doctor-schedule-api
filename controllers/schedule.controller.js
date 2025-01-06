@@ -19,9 +19,8 @@ export const getSchedules = async (req, res) => {
     })
       .sort({ date: 'asc' })
       .populate('doctor');
-
     // const schedules = await Schedule.find().populate('doctor');
-    res.status(200).json({ success: true, data: schedules });
+    res.status(200).json({ success: true, count: schedules.length, data: schedules });
   } catch (error) {
     console.log('error in fetching schedules:', error.message);
     res.status(500).json({ success: false, message: 'Server Error' });
